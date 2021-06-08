@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using UnblockMe.Models;
+using UnblockMe.Models.Entities;
 
 namespace UnblockMe.Controllers
 {
@@ -32,6 +29,55 @@ namespace UnblockMe.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpGet("{id}")]
+        public Vehicle GetCar(int id)
+        {
+
+            Vehicle temp = new Vehicle
+            {
+                Id = id,
+                Make = "Dacia",
+                Model = "Logan",
+                RegPlate = "DJ12DJD"
+            };
+
+            return temp;
+        }
+
+        [HttpDelete("{id}")]
+        public Vehicle DeleteCar(int id)
+        {
+            Vehicle temp = new Vehicle
+            {
+                Id = id,
+                Make = "Dacia",
+                Model = "Logan",
+                RegPlate = "DJ12DJD"
+            };
+            
+            return temp;
+        }
+
+        [HttpPost("{id}")]
+        public Vehicle PostCar(Vehicle vehicle)
+        {
+            return vehicle;
+        }
+
+        [HttpPut("{id}")]
+        public Vehicle PutCar(int id)
+        {
+            Vehicle temp = new Vehicle
+            {
+                Id = id,
+                Make = "Dacia",
+                Model = "Logan",
+                RegPlate = "DJ12DJD"
+            };
+
+            return temp;
         }
     }
 }
